@@ -1,0 +1,99 @@
+/* Estilo global */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+    flex-direction: column;
+}
+
+/* Container que envolve os textos e o formulário */
+.container {
+    text-align: center;
+}
+
+/* Estilo do título "Smart Supply" */
+h1 {
+    font-size: 3rem;
+    color: #1E88E5;
+    margin-bottom: 0.5rem;
+}
+
+/* Estilo do subtítulo "Bem-vindo(a)!" */
+h2 {
+    font-size: 1.5rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+/* Estilo do formulário de login */
+.Login {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Estilo do título "Login" no formulário */
+.Login h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Estilo dos rótulos e inputs */
+label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    display: block;
+    color: #666;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+input[type="submit"] {
+    background-color: #1E88E5;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+input[type="submit"]:hover {
+    background-color: #1565C0;
+}
+
+/* Estilo do link */
+p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #1E88E5;
+    font-size: 1rem;
+}
+
+a:hover {
+    text-decoration: underline;
+}
