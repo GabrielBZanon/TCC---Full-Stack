@@ -77,7 +77,7 @@ Trabalho Final
 - [RN004] VSCode
 - [RN005] Insomnia
 
-## 👨‍💻 Desenvolvedores
+## Desenvolvedores
 
 - Gabriel B. Zanon
 - Kauê H. C. Fidelis
