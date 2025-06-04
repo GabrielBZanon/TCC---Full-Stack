@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Usuários</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/geral.css">
+    <style>
+        .card-login {
+            max-width: 400px;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+        .admin-badge {
+            background-color: #dc3545;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+        }
+        .user-badge {
+            background-color: #6c757d;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div id="login-container" class="container">
+        <div class="card card-login">
+            <div class="card-header">
+                <h5 class="mb-0">Login do Sistema</h5>
+            </div>
+            <div class="card-body">
+                <form id="loginForm">
+                    <div class="form-group mb-3">
+                        <label for="login-email">Email</label>
+                        <input type="email" class="form-control" id="login-email" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="login-senha">Senha</label>
+                        <input type="password" class="form-control" id="login-senha" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Entrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="app-container" style="display: none;">
+        <header class="main-header">
+            <div class="container">
+                <h1>Gestão de Usuários</h1>
+                <nav>
+                    <a href="../index.html">Home</a>
+                    <a href="produtos.html">Produtos</a>
+                    <a href="fornecedores.html">Fornecedores</a>
+                    <a href="movimentacoes.html">Movimentações</a>
+                    <a href="usuarios.html" class="active">Usuários</a>
+                    <button id="logout-btn" class="btn btn-sm btn-outline-light">Sair</button>
+                </nav>
+            </div>
+        </header>
+
+        <main class="container main-content">
+            <div class="card form-card">
+                <div class="card-header">
+                    <h5 class="mb-0">Cadastrar/Editar Usuário</h5>
+                </div>
+                <div class="card-body">
+                    <form id="usuarioForm">
+                        <input type="hidden" id="usuarioId">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="nome">Nome Completo</label>
+                                    <input type="text" class="form-control" id="nome" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="senha">Senha</label>
+                                    <input type="password" class="form-control" id="senha">
+                                    <small class="text-muted">Deixe em branco para manter a senha atual</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="cargo">Cargo</label>
+                                    <select class="form-control" id="cargo" required>
+                                        <option value="">Selecione...</option>
+                                        <option value="ADMIN">Administrador</option>
+                                        <option value="USER">Usuário</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="action-buttons mt-3">
+                            <button type="submit" class="btn btn-primary">Salvar</button>
+                            <button type="button" class="btn btn-secondary" id="cancelarBtn" style="display: none;">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card list-card mt-4">
+                <div class="card-header">
+                    <h5 class="mb-0">Lista de Usuários</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nome</th>
+                                    <th>Email</th>
+                                    <th>Cargo</th>
+                                    <th>Cadastrado em</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usuariosTable">
+                                <!-- Dados serão carregados via JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="main-footer">
+            <div class="container">
+                <p>Sistema de Gestão de Estoque &copy; <span id="current-year"></span></p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/usuarios.js"></script>
+</body>
+</html>

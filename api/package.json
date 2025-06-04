@@ -1,0 +1,21 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "Kauê H. C. Fidelis - Marcos V. Oliveira - Gabriel B. Zanon - Lucas G. Giachetto",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^6.6.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mysql": "^2.18.1",
+    "prisma": "^6.6.0"
+  },
+  "description": ""
+}
