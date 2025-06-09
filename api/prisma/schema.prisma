@@ -1,3 +1,8 @@
+// schema.prisma
+
+// Banco de dados: MySQL
+// Prisma ORM configurado para o sistema Smart Supply
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -8,53 +13,43 @@ datasource db {
 }
 
 model Produto {
-  id             Int      @id @default(autoincrement())
-  nome           String
-  descricao      String
-  codigoBarras   String   @unique
-  quantidade     Int
-  localEstoque   String
-  fornecedorId   Int
-  criadoEm       DateTime @default(now())
-  atualizadoEm   DateTime @updatedAt
-
-  fornecedor     Fornecedor @relation(fields: [fornecedorId], references: [id])
-  movimentacoes  Movimentacao[]
-
-  @@map("produtos")
+  id           Int           @id @default(autoincrement())
+  nome         String
+  descricao    String
+  codigoBarras String        @unique
+  quantidade   Int
+  localEstoque String
+  fornecedor   Fornecedor    @relation(fields: [fornecedorId], references: [id])
+  fornecedorId Int
+  criadoEm     DateTime      @default(now())
+  atualizadoEm DateTime      @updatedAt
+  movimentacoes Movimentacao[]
 }
 
 model Fornecedor {
-  id         Int       @id @default(autoincrement())
+  id         Int        @id @default(autoincrement())
   nome       String
-  cnpj       String    @unique
+  cnpj       String     @unique
   contato    String
   email      String
+  criadoEm   DateTime   @default(now())
   produtos   Produto[]
-  criadoEm   DateTime  @default(now())
-
-  @@map("fornecedores")
 }
 
 model Movimentacao {
-  id          Int      @id @default(autoincrement())
-  tipo        String  
-  quantidade  Int
-  data        DateTime @default(now())
-  produtoId   Int
-
-  produto     Produto  @relation(fields: [produtoId], references: [id])
-
-  @@map("movimentacoes")
+  id         Int      @id @default(autoincrement())
+  tipo       String
+  quantidade Int
+  data       DateTime @default(now())
+  produto    Produto  @relation(fields: [produtoId], references: [id])
+  produtoId  Int
 }
 
 model Usuario {
-  id         Int       @id @default(autoincrement())
-  nome       String
-  email      String    @unique
-  senha      String
-  cargo      String   
-  criadoEm   DateTime  @default(now())
-
-  @@map("usuarios")
+  id       Int      @id @default(autoincrement())
+  nome     String
+  email    String   @unique
+  senha    String
+  cargo    String
+  criadoEm DateTime @default(now())
 }

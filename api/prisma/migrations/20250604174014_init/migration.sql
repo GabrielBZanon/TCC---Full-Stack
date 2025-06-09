@@ -1,5 +1,5 @@
 -- CreateTable
-CREATE TABLE `produtos` (
+CREATE TABLE `Produto` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `nome` VARCHAR(191) NOT NULL,
     `descricao` VARCHAR(191) NOT NULL,
@@ -10,12 +10,12 @@ CREATE TABLE `produtos` (
     `criadoEm` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `atualizadoEm` DATETIME(3) NOT NULL,
 
-    UNIQUE INDEX `produtos_codigoBarras_key`(`codigoBarras`),
+    UNIQUE INDEX `Produto_codigoBarras_key`(`codigoBarras`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `fornecedores` (
+CREATE TABLE `Fornecedor` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `nome` VARCHAR(191) NOT NULL,
     `cnpj` VARCHAR(191) NOT NULL,
@@ -23,12 +23,12 @@ CREATE TABLE `fornecedores` (
     `email` VARCHAR(191) NOT NULL,
     `criadoEm` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
-    UNIQUE INDEX `fornecedores_cnpj_key`(`cnpj`),
+    UNIQUE INDEX `Fornecedor_cnpj_key`(`cnpj`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `movimentacoes` (
+CREATE TABLE `Movimentacao` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `tipo` VARCHAR(191) NOT NULL,
     `quantidade` INTEGER NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE `movimentacoes` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `usuarios` (
+CREATE TABLE `Usuario` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `nome` VARCHAR(191) NOT NULL,
     `email` VARCHAR(191) NOT NULL,
@@ -47,12 +47,12 @@ CREATE TABLE `usuarios` (
     `cargo` VARCHAR(191) NOT NULL,
     `criadoEm` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
-    UNIQUE INDEX `usuarios_email_key`(`email`),
+    UNIQUE INDEX `Usuario_email_key`(`email`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- AddForeignKey
-ALTER TABLE `produtos` ADD CONSTRAINT `produtos_fornecedorId_fkey` FOREIGN KEY (`fornecedorId`) REFERENCES `fornecedores`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Produto` ADD CONSTRAINT `Produto_fornecedorId_fkey` FOREIGN KEY (`fornecedorId`) REFERENCES `Fornecedor`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `movimentacoes` ADD CONSTRAINT `movimentacoes_produtoId_fkey` FOREIGN KEY (`produtoId`) REFERENCES `produtos`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Movimentacao` ADD CONSTRAINT `Movimentacao_produtoId_fkey` FOREIGN KEY (`produtoId`) REFERENCES `Produto`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;

@@ -1,14 +1,19 @@
 const express = require('express');
 const cors = require('cors');
-const port = 5000;
-const routes = require('./src/routes');
-
 const app = express();
+const routes = require('./routes/routes');
 
-app.use(express.json())
-app.use(cors())
-app.use(routes)
 
-app.listen(port, ()=>{
-    console.log(`Servidor rodando na porta: ${port}`)
-})
+const PORT = process.env.PORT || 3000;
+
+app.use(cors());
+app.use(express.json());
+app.use('/api', routes);
+
+app.get('/', (req, res) => {
+  res.send('Smart Supply API rodando com sucesso!');
+});
+
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+});
