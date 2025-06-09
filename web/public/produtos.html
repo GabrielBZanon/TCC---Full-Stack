@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - Smart Supply</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <!-- Mesmo sidebar do dashboard -->
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Gestão de Produtos</h1>
+                <div class="actions">
+                    <button id="addProdutoBtn" class="btn btn-primary"><i class="fas fa-plus"></i> Adicionar
+                        Produto</button>
+                </div>
+                <div class="user-profile">
+                    <span id="userName">Usuário</span>
+                    <div class="avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content">
+                <div class="filters">
+                    <input type="text" id="produtoSearch" placeholder="Buscar produto...">
+                    <select id="localFilter">
+                        <option value="">Todos os locais</option>
+                        <option value="Setor A">Setor A</option>
+                        <option value="Setor B">Setor B</option>
+                        <option value="Setor C">Setor C</option>
+                    </select>
+                </div>
+
+                <div class="table-responsive">
+                    <table id="produtosTable">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Descrição</th>
+                                <th>Código de Barras</th>
+                                <th>Quantidade</th>
+                                <th>Local</th>
+                                <th>Fornecedor</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Produtos serão carregados via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal para adicionar/editar produto -->
+    <div id="produtoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Adicionar Novo Produto</h2>
+            <form id="produtoForm">
+                <input type="hidden" id="produtoId">
+                <div class="form-group">
+                    <label for="produtoNome">Nome*</label>
+                    <input type="text" id="produtoNome" required>
+                </div>
+                <div class="form-group">
+                    <label for="produtoDescricao">Descrição*</label>
+                    <textarea id="produtoDescricao" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="produtoCodigoBarras">Código de Barras*</label>
+                    <input type="text" id="produtoCodigoBarras" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="produtoQuantidade">Quantidade*</label>
+                        <input type="number" id="produtoQuantidade" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="produtoLocal">Local de Estoque*</label>
+                        <select id="produtoLocal" required>
+                            <option value="Setor A">Setor A</option>
+                            <option value="Setor B">Setor B</option>
+                            <option value="Setor C">Setor C</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="produtoFornecedor">Fornecedor*</label>
+                    <select id="produtoFornecedor" required>
+                        <option value="Setor A">ulissesPneus</option>
+                        <option value="Setor B">goodyear</option>
+                        <option value="Setor C">Ampneus</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/produtos.js"></script>
+</body>
+
+</html>
