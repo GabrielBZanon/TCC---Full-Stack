@@ -1,0 +1,110 @@
+/* Estilos gerais */
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #f5f7fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+.login-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    padding: 2.5rem;
+}
+
+/* Formulário */
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #4a5568;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+}
+
+/* Botão */
+button[type="submit"] {
+    width: 100%;
+    padding: 0.75rem;
+    background: #4299e1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    position: relative;
+}
+
+button[type="submit"]:hover {
+    background: #3182ce;
+}
+
+/* Spinner */
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Mensagem de erro */
+#loginError {
+    display: none;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    background: #fff5f5;
+    color: #e53e3e;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    border: 1px solid #fed7d7;
+}
+
+/* Link de cadastro */
+.login-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #718096;
+}
+
+.login-footer a {
+    color: #4299e1;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-footer a:hover {
+    text-decoration: underline;
+}
