@@ -19,5 +19,6 @@
   "keywords": [],
   "author": "GabrielBZanon",
   "license": "ISC",
-  "description": "projetoAlmoxerifadoAutomobilistico"
+  "description": "projetoAlmoxerifadoAutomobilistico",
+  "devDependencies": {}
 }
