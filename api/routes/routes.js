@@ -1,22 +1,19 @@
 const express = require('express');
-const router = express.Router();
+const router = express.Router(); // Isso é crucial - usar o Router do Express
 const authMiddleware = require('../middlewares/authMiddleware');
 
-// Importe seus controllers
+// Importe seus controllers corretamente
 const usuarioController = require('../controllers/usuarioController');
 const produtoController = require('../controllers/produtoController');
 const fornecedorController = require('../controllers/fornecedorController');
 const movimentacaoController = require('../controllers/movimentacaoController');
 
 // Rotas públicas
-router.post('/usuarios', usuarioController.create);
+router.post('/usuarios', usuarioController.cadastrarUsuario);
 router.post('/usuarios/login', usuarioController.login);
 
-// Rotas protegidas (requerem autenticação)
+// Rotas protegidas
 router.use(authMiddleware);
-
-// Rotas de usuários
-router.get('/usuarios', usuarioController.read);
 
 // Rotas de produtos
 router.post('/produtos', produtoController.create);

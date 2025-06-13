@@ -44,8 +44,9 @@ CREATE TABLE `Usuario` (
     `nome` VARCHAR(191) NOT NULL,
     `email` VARCHAR(191) NOT NULL,
     `senha` VARCHAR(191) NOT NULL,
-    `cargo` VARCHAR(191) NOT NULL,
-    `criadoEm` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `cargo` VARCHAR(191) NULL,
+    `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updated_at` DATETIME(3) NOT NULL,
 
     UNIQUE INDEX `Usuario_email_key`(`email`),
     PRIMARY KEY (`id`)

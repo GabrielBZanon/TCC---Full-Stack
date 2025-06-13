@@ -46,10 +46,13 @@ model Movimentacao {
 }
 
 model Usuario {
-  id       Int      @id @default(autoincrement())
-  nome     String
-  email    String   @unique
-  senha    String
-  cargo    String
-  criadoEm DateTime @default(now())
+  id    Int     @id @default(autoincrement())
+  nome  String
+  email String  @unique
+  senha String
+  cargo String?
+  // Remova createdAt e updatedAt se não quiser esses campos
+  // Ou adicione se forem necessários:
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 }
