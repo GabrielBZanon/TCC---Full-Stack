@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors'); // Adicione esta linha
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
@@ -7,6 +8,11 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middlewares
+app.use(cors({ // Configure o CORS antes de outros middlewares
+  origin: 'http://127.0.0.1:5500', // URL do seu frontend
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 
 // Importação correta das rotas
