@@ -1,0 +1,131 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo global */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #e3f2fd, #f4f4f4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+    flex-direction: column;
+}
+
+/* Container */
+.container {
+    text-align: center;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Título */
+h1 {
+    font-size: 3rem;
+    color: #1E88E5;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+/* Login box */
+.Login {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+    width: 100%;
+    max-width: 400px;
+    transition: transform 0.3s ease;
+}
+
+.Login:hover {
+    transform: translateY(-3px);
+}
+
+/* Login title */
+.Login h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Labels e inputs */
+label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    display: block;
+    color: #666;
+    text-align: left;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #1E88E5;
+    box-shadow: 0 0 5px rgba(30,136,229,0.3);
+    outline: none;
+}
+
+/* Botão */
+input[type="submit"] {
+    background-color: #1E88E5;
+    color: #fff;
+    border: none;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    font-weight: bold;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #1565C0;
+    box-shadow: 0 4px 10px rgba(30,136,229,0.4);
+}
+
+/* Links */
+p {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 0.95rem;
+}
+
+a {
+    text-decoration: none;
+    color: #1E88E5;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #0d47a1;
+}
+
+/* Animação */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}

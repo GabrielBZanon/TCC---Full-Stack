@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Smart Supply — Fornecedores</title>
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+  <div id="navbar"></div>
+  <div class="container">
+    <div class="grid cols-2">
+      <section class="card">
+        <h2>Novo Fornecedor</h2>
+        <form id="formFornecedor" class="grid" style="gap:10px">
+          <div class="form-row">
+            <input id="f_nome" placeholder="Nome" required />
+            <input id="f_cnpj" placeholder="CNPJ" required />
+          </div>
+          <div class="form-row">
+            <input id="f_contato" placeholder="Contato" required />
+            <input id="f_email" placeholder="E-mail" required />
+          </div>
+          <div class="actions">
+            <button type="submit">Cadastrar</button>
+            <button type="button" id="f_reset" class="secondary">Limpar</button>
+          </div>
+          <p id="f_msg" class="error"></p>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Fornecedores</h2>
+        <table class="table" id="tblFornecedores">
+          <thead>
+            <tr><th>ID</th><th>Nome</th><th>CNPJ</th><th>Contato</th><th>E-mail</th><th>Ações</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </div>
+  </div>
+
+  <script type="module">
+    import { requireAuth } from "./assets/js/auth.js";
+    import { http } from "./assets/js/api.js";
+    import { mountNavbar } from "./assets/js/main.js";
+
+    requireAuth(); mountNavbar("fornecedores");
+
+    const form = document.getElementById("formFornecedor");
+    const tbody = document.querySelector("#tblFornecedores tbody");
+    const msg = document.getElementById("f_msg");
+
+    async function carregar() {
+      const lista = await http.get("/fornecedores");
+      tbody.innerHTML = "";
+      lista.forEach(f => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${f.id}</td>
+          <td>${f.nome}</td>
+          <td>${f.cnpj}</td>
+          <td>${f.contato}</td>
+          <td>${f.email}</td>
+          <td class="actions">
+            <button class="secondary" data-edit="${f.id}">Editar</button>
+            <button class="danger" data-del="${f.id}">Excluir</button>
+          </td>`;
+        tbody.appendChild(tr);
+      });
+    }
+
+    tbody.addEventListener("click", async (e) => {
+      const idDel = e.target.getAttribute("data-del");
+      const idEdt = e.target.getAttribute("data-edit");
+
+      if (idDel) {
+        if (!confirm("Excluir fornecedor?")) return;
+        try { await http.del(`/fornecedores/${idDel}`); await carregar(); }
+        catch (err) { alert(err.message); }
+      }
+
+      if (idEdt) {
+        const cur = await http.get(`/fornecedores/${idEdt}`);
+        const nome = prompt("Nome:", cur.nome) ?? cur.nome;
+        const cnpj = prompt("CNPJ:", cur.cnpj) ?? cur.cnpj;
+        const contato = prompt("Contato:", cur.contato) ?? cur.contato;
+        const email = prompt("E-mail:", cur.email) ?? cur.email;
+        await http.put(`/fornecedores/${idEdt}`, { nome, cnpj, contato, email });
+        await carregar();
+      }
+    });
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault(); msg.textContent = "";
+      const body = {
+        nome: document.getElementById("f_nome").value.trim(),
+        cnpj: document.getElementById("f_cnpj").value.trim(),
+        contato: document.getElementById("f_contato").value.trim(),
+        email: document.getElementById("f_email").value.trim(),
+      };
+      try {
+        await http.post("/fornecedores", body);
+        form.reset();
+        await carregar();
+      } catch (err) {
+        msg.textContent = err.message;
+      }
+    });
+
+    document.getElementById("f_reset").addEventListener("click", () => form.reset());
+    await carregar();
+  </script>
+</body>
+</html>

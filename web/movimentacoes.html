@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Smart Supply — Movimentações</title>
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+  <div id="navbar"></div>
+  <div class="container">
+    <div class="grid cols-2">
+      <section class="card">
+        <h2>Nova Movimentação</h2>
+        <form id="formMov" class="grid" style="gap:10px">
+          <div class="form-row">
+            <select id="m_produtoId" required>
+              <option value="">Selecione um produto</option>
+            </select>
+            <select id="m_tipo" required>
+              <option value="">Tipo</option>
+              <option value="ENTRADA">ENTRADA</option>
+              <option value="SAIDA">SAIDA</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <input type="number" id="m_quantidade" placeholder="Quantidade" required />
+            <input id="m_obs" placeholder="Observações (opcional)" />
+          </div>
+          <div class="actions">
+            <button type="submit">Registrar</button>
+            <button type="button" id="m_reset" class="secondary">Limpar</button>
+          </div>
+          <p id="m_msg" class="error"></p>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Histórico</h2>
+        <table class="table" id="tblMovs">
+          <thead>
+            <tr><th>ID</th><th>Data</th><th>Tipo</th><th>Qtd</th><th>Produto</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </div>
+  </div>
+
+  <script type="module">
+    import { requireAuth } from "./assets/js/auth.js";
+    import { http } from "./assets/js/api.js";
+    import { mountNavbar } from "./assets/js/main.js";
+
+    requireAuth(); mountNavbar("movs");
+
+    const selProd = document.getElementById("m_produtoId");
+    const tbody = document.querySelector("#tblMovs tbody");
+    const form = document.getElementById("formMov");
+    const msg = document.getElementById("m_msg");
+
+    async function carregarProdutos() {
+      const produtos = await http.get("/produtos");
+      selProd.innerHTML = '<option value="">Selecione um produto</option>';
+      produtos.forEach(p => {
+        const opt = document.createElement("option");
+        opt.value = p.id; opt.textContent = `${p.nome} • qtd: ${p.quantidade}`;
+        selProd.appendChild(opt);
+      });
+    }
+
+    function fmt(d) {
+      const dt = new Date(d);
+      return dt.toLocaleString();
+    }
+
+    async function carregarMovs() {
+      const movs = await http.get("/movimentacoes");
+      tbody.innerHTML = "";
+      movs.forEach(m => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${m.id}</td>
+          <td>${fmt(m.data)}</td>
+          <td><span class="badge">${m.tipo}</span></td>
+          <td>${m.quantidade}</td>
+          <td>${m.produto?.nome || "-"}</td>`;
+        tbody.appendChild(tr);
+      });
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault(); msg.textContent = "";
+      const body = {
+        tipo: document.getElementById("m_tipo").value,
+        quantidade: Number(document.getElementById("m_quantidade").value),
+        produtoId: Number(selProd.value),
+      };
+      try {
+        await http.post("/movimentacoes", body);
+        form.reset();
+        await carregarProdutos();
+        await carregarMovs();
+      } catch (err) { msg.textContent = err.message; }
+    });
+
+    document.getElementById("m_reset").addEventListener("click", () => form.reset());
+
+    await carregarProdutos();
+    await carregarMovs();
+  </script>
+</body>
+</html>

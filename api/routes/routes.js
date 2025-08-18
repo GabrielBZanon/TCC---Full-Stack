@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router(); // Isso é crucial - usar o Router do Express
 const authMiddleware = require('../middlewares/authMiddleware');
+const loginController = require('../controllers/loginController');
 
 // Importe seus controllers corretamente
 const usuarioController = require('../controllers/usuarioController');
@@ -31,6 +32,7 @@ router.delete('/fornecedores/:id', fornecedorController.remove);
 
 // Rotas de movimentações
 router.post('/movimentacoes', movimentacaoController.create);
+router.post('/', loginController.login);
 router.get('/movimentacoes', movimentacaoController.read);
 
 module.exports = router;

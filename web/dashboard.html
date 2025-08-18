@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Smart Supply — Dashboard</title>
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+  <div id="navbar"></div>
+  <div class="container">
+    <div class="grid cols-3">
+      <div class="card">
+        <h2>Produtos</h2>
+        <p class="muted">Gerencie cadastro, estoque e detalhes.</p>
+        <a href="produtos.html"><button>Ir para Produtos</button></a>
+      </div>
+      <div class="card">
+        <h2>Fornecedores</h2>
+        <p class="muted">Cadastre e edite fornecedores.</p>
+        <a href="fornecedores.html"><button>Ir para Fornecedores</button></a>
+      </div>
+      <div class="card">
+        <h2>Movimentações</h2>
+        <p class="muted">Registre entradas e saídas.</p>
+        <a href="movimentacoes.html"><button>Ir para Movimentações</button></a>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { requireAuth } from "./assets/js/auth.js";
+    import { mountNavbar } from "./assets/js/main.js";
+    requireAuth(); mountNavbar("dashboard");
+  </script>
+</body>
+</html>
