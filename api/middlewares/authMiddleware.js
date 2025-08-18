@@ -3,7 +3,6 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 const authMiddleware = async (req, res, next) => {
-    // Verifica se o token foi enviado
     const authHeader = req.headers.authorization;
 
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -17,10 +16,9 @@ const authMiddleware = async (req, res, next) => {
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-        // usa id OU email (melhor id)
+        
         const usuario = await prisma.usuario.findUnique({
-            where: { id: decoded.id },
+            where: { id: decoded.usuario.id },
             select: { id: true, email: true, cargo: true }
         });
 
@@ -28,8 +26,6 @@ const authMiddleware = async (req, res, next) => {
             return res.status(401).json({ error: "Usuário não encontrado" });
         }
 
-
-        // Adiciona o usuário à requisição
         req.user = usuario;
         next();
 

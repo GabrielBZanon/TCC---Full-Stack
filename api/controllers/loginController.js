@@ -7,7 +7,7 @@ module.exports = {
         const { email, senha } = req.body;
 
         try {
-            // Buscar usuário no banco
+
             const usuario = await prisma.usuario.findUnique({
                 where: { email }
             });
@@ -16,7 +16,6 @@ module.exports = {
                 return res.status(404).json({ error: 'Usuário não encontrado' });
             }
 
-            // Comparar senha
             const senhaValida = await bcrypt.compare(senha, usuario.senha);
             if (!senhaValida) {
                 return res.status(401).json({ error: 'Senha inválida' });
