@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Smart Supply — Login</title>
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+  <div class="center">
+    <div class="card login">
+      <div class="brand" style="justify-content:center;margin-bottom:14px">
+        <div class="logo"></div>
+        <h1>Smart Supply</h1>
+      </div>
+      <h2>Entrar</h2>
+      <form id="loginForm" class="grid" style="gap:10px">
+        <input type="email" id="email" placeholder="E-mail" required />
+        <input type="password" id="senha" placeholder="Senha" required />
+        <button type="submit">Entrar</button>
+        <p id="loginError" class="error"></p>
+      </form>
+      <p class="footer muted">Back-end: http://localhost:3000/api</p>
+    </div>
+  </div>
+
+  <script type="module">
+    import { doLogin } from "./assets/js/auth.js";
+    const form = document.getElementById("loginForm");
+    const err = document.getElementById("loginError");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      err.textContent = "";
+      const email = document.getElementById("email").value.trim();
+      const senha = document.getElementById("senha").value.trim();
+
+      form.querySelector("button").disabled = true;
+      try {
+        await doLogin(email, senha);
+        window.location.href = "dashboard.html";
+      } catch (e) {
+        err.textContent = e.message || "Erro no login";
+      } finally {
+        form.querySelector("button").disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

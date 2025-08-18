@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Smart Supply — Produtos</title>
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+  <div id="navbar"></div>
+  <div class="container">
+    <div class="grid cols-2">
+      <section class="card">
+        <h2>Novo Produto</h2>
+        <form id="formProduto" class="grid" style="gap:10px">
+          <div class="form-row">
+            <input id="p_nome" placeholder="Nome" required />
+            <input id="p_codigoBarras" placeholder="Código de Barras" required />
+          </div>
+          <div class="form-row">
+            <input id="p_descricao" placeholder="Descrição" required />
+            <input id="p_localEstoque" placeholder="Local no Estoque" required />
+          </div>
+          <div class="form-row">
+            <input type="number" id="p_quantidade" placeholder="Quantidade" required />
+            <select id="p_fornecedorId" required>
+              <option value="">Selecione um fornecedor</option>
+            </select>
+          </div>
+          <div class="actions">
+            <button type="submit">Cadastrar</button>
+            <button type="button" id="resetBtn" class="secondary">Limpar</button>
+          </div>
+          <p id="p_msg" class="error"></p>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Produtos</h2>
+        <table class="table" id="tblProdutos">
+          <thead>
+            <tr>
+              <th>ID</th><th>Nome</th><th>Qtd</th><th>Fornecedor</th><th>Ações</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </div>
+  </div>
+
+  <script type="module">
+    import { requireAuth } from "./assets/js/auth.js";
+    import { http } from "./assets/js/api.js";
+    import { mountNavbar } from "./assets/js/main.js";
+
+    requireAuth(); mountNavbar("produtos");
+
+    const form = document.getElementById("formProduto");
+    const msg  = document.getElementById("p_msg");
+    const tbody = document.querySelector("#tblProdutos tbody");
+    const selFornecedor = document.getElementById("p_fornecedorId");
+
+    async function carregarFornecedores() {
+      const fornecedores = await http.get("/fornecedores");
+      selFornecedor.innerHTML = '<option value="">Selecione um fornecedor</option>';
+      fornecedores.forEach(f => {
+        const opt = document.createElement("option");
+        opt.value = f.id; opt.textContent = `${f.nome} (CNPJ: ${f.cnpj})`;
+        selFornecedor.appendChild(opt);
+      });
+    }
+
+    async function carregarProdutos() {
+      const produtos = await http.get("/produtos");
+      tbody.innerHTML = "";
+      produtos.forEach(p => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${p.id}</td>
+          <td>
+            <div>${p.nome}</div>
+            <div class="muted" style="font-size:12px">Cod: ${p.codigoBarras} • ${p.localEstoque}</div>
+          </td>
+          <td><span class="badge">${p.quantidade}</span></td>
+          <td>${p.fornecedor?.nome || "-"}</td>
+          <td class="actions">
+            <button data-edit="${p.id}" class="secondary">Editar</button>
+            <button data-del="${p.id}" class="danger">Excluir</button>
+          </td>`;
+        tbody.appendChild(tr);
+      });
+    }
+
+    tbody.addEventListener("click", async (e) => {
+      const idDel = e.target.getAttribute("data-del");
+      const idEdt = e.target.getAttribute("data-edit");
+
+      if (idDel) {
+        if (!confirm("Confirma excluir o produto?")) return;
+        await http.del(`/produtos/${idDel}`);
+        await carregarProdutos();
+        return;
+      }
+
+      if (idEdt) {
+        const prod = await http.get(`/produtos/${idEdt}`);
+        const novoNome = prompt("Nome:", prod.nome) ?? prod.nome;
+        const novaQtd = Number(prompt("Quantidade:", prod.quantidade) ?? prod.quantidade);
+        const novoLocal = prompt("Local no estoque:", prod.localEstoque) ?? prod.localEstoque;
+        await http.put(`/produtos/${idEdt}`, { ...prod, nome: novoNome, quantidade: novaQtd, localEstoque: novoLocal, fornecedorId: prod.fornecedorId });
+        await carregarProdutos();
+      }
+    });
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault(); msg.textContent = "";
+      const body = {
+        nome: document.getElementById("p_nome").value.trim(),
+        descricao: document.getElementById("p_descricao").value.trim(),
+        codigoBarras: document.getElementById("p_codigoBarras").value.trim(),
+        quantidade: Number(document.getElementById("p_quantidade").value),
+        localEstoque: document.getElementById("p_localEstoque").value.trim(),
+        fornecedorId: Number(selFornecedor.value),
+      };
+      try {
+        await http.post("/produtos", body);
+        form.reset();
+        await carregarProdutos();
+      } catch (err) { msg.textContent = err.message; }
+    });
+
+    document.getElementById("resetBtn").addEventListener("click", () => form.reset());
+
+    // init
+    await carregarFornecedores();
+    await carregarProdutos();
+  </script>
+</body>
+</html>
