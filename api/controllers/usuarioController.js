@@ -11,7 +11,6 @@ const cadastrarUsuario = async (req, res) => {
   try {
     const { nome, email, senha } = req.body;
 
-    // Validação básica
     if (!nome || !email || !senha) {
       return res.status(400).json({
         erro: 'Todos os campos são obrigatórios',
@@ -19,7 +18,6 @@ const cadastrarUsuario = async (req, res) => {
       });
     }
 
-    // Verifica se usuário existe
     const usuarioExistente = await prisma.usuario.findUnique({
       where: { email }
     });
@@ -28,10 +26,8 @@ const cadastrarUsuario = async (req, res) => {
       return res.status(409).json({ erro: 'Email já cadastrado' });
     }
 
-    // Criptografa senha
     const senhaHash = await bcrypt.hash(senha, SALT_ROUNDS);
 
-    // Cria novo usuário
     const novoUsuario = await prisma.usuario.create({
       data: {
         nome,
@@ -40,7 +36,6 @@ const cadastrarUsuario = async (req, res) => {
       }
     });
 
-    // Remove senha do retorno
     const { senha: _, ...usuarioSemSenha } = novoUsuario;
 
     return res.status(201).json({
@@ -58,14 +53,12 @@ const login = async (req, res) => {
   try {
     const { email, senha } = req.body;
 
-    // Validação básica
     if (!email || !senha) {
       return res.status(400).json({
         erro: 'Email e senha são obrigatórios'
       });
     }
 
-    // Busca usuário por email
     const usuario = await prisma.usuario.findUnique({
       where: { email }
     });
@@ -76,7 +69,6 @@ const login = async (req, res) => {
       });
     }
 
-    // Compara senha com hash
     const senhaValida = await bcrypt.compare(senha, usuario.senha);
 
     if (!senhaValida) {
@@ -85,10 +77,8 @@ const login = async (req, res) => {
       });
     }
 
-    // Remove senha do retorno
     const { senha: _, ...usuarioSemSenha } = usuario;
-    
-    // Gera token JWT
+ 
     const token = jsonwebtoken.sign(
       { usuario: usuarioSemSenha },
       process.env.JWT_SECRET || 'segredo',

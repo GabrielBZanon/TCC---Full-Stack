@@ -1,17 +1,14 @@
 const API_URL = "http://localhost:3000/api";
 
-/** Util: pega token salvo */
 export function getToken() {
   return localStorage.getItem("token");
 }
 
-/** Util: salva/limpa token */
 export function setToken(token) {
   if (token) localStorage.setItem("token", token);
   else localStorage.removeItem("token");
 }
 
-/** Redireciona se 401 */
 function handleAuthFailure(res) {
   if (res.status === 401) {
     localStorage.removeItem("token");
@@ -19,7 +16,6 @@ function handleAuthFailure(res) {
   }
 }
 
-/** Wrapper para fetch com JWT */
 export async function api(path, { method="GET", body, headers={} } = {}) {
   const token = getToken();
   const opts = {

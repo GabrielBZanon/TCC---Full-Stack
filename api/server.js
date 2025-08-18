@@ -1,25 +1,23 @@
 require('dotenv').config();
 const express = require('express');
-const cors = require('cors'); // Adicione esta linha
+const cors = require('cors'); 
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middlewares
-app.use(cors({ // Configure o CORS antes de outros middlewares
-  origin: 'http://127.0.0.1:5500', // URL do seu frontend
+app.use(cors({ 
+  origin: 'http://127.0.0.1:5500', 
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json());
 
-// Importação correta das rotas
 const routes = require('./routes/routes');
 app.use('/api', routes);
 
-// Health Check
+
 app.get('/api/health', async (req, res) => {
   try {
     await prisma.$queryRaw`SELECT 1`;
@@ -36,7 +34,7 @@ app.get('/api/health', async (req, res) => {
   }
 });
 
-// Inicialização
+
 async function startServer() {
   try {
     await prisma.$connect();
