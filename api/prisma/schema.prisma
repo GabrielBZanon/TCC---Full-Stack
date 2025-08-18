@@ -1,0 +1,58 @@
+// schema.prisma
+
+// Banco de dados: MySQL
+// Prisma ORM configurado para o sistema Smart Supply
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Produto {
+  id           Int           @id @default(autoincrement())
+  nome         String
+  descricao    String
+  codigoBarras String        @unique
+  quantidade   Int
+  localEstoque String
+  fornecedor   Fornecedor    @relation(fields: [fornecedorId], references: [id])
+  fornecedorId Int
+  criadoEm     DateTime      @default(now())
+  atualizadoEm DateTime      @updatedAt
+  movimentacoes Movimentacao[]
+}
+
+model Fornecedor {
+  id         Int        @id @default(autoincrement())
+  nome       String
+  cnpj       String     @unique
+  contato    String
+  email      String
+  criadoEm   DateTime   @default(now())
+  produtos   Produto[]
+}
+
+model Movimentacao {
+  id         Int      @id @default(autoincrement())
+  tipo       String
+  quantidade Int
+  data       DateTime @default(now())
+  produto    Produto  @relation(fields: [produtoId], references: [id])
+  produtoId  Int
+}
+
+model Usuario {
+  id    Int     @id @default(autoincrement())
+  nome  String
+  email String  @unique
+  senha String
+  cargo String?
+  // Remova createdAt e updatedAt se não quiser esses campos
+  // Ou adicione se forem necessários:
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+}
