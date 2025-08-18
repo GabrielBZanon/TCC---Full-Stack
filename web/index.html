@@ -3,23 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <title>Smart Supply — Login</title>
-  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="./assets/css/index.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="center">
-    <div class="card login">
-      <div class="brand" style="justify-content:center;margin-bottom:14px">
-        <div class="logo"></div>
-        <h1>Smart Supply</h1>
+  <div class="login-container">
+    <div class="login-form">
+      <div class="card login">
+        <div class="brand">
+          <div class="logo">
+            <img src="../docs/img/logo-ilustration-complete.png" alt="Smart Supply Logo"/>
+          </div>
+        </div>
+        <h2>Entrar</h2>
+        <form id="loginForm" class="grid">
+          <div class="input-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" placeholder="Digite seu e-mail" required />
+          </div>
+          <div class="input-group">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" placeholder="Digite sua senha" required />
+          </div>
+          <button type="submit">Entrar</button>
+          <p id="loginError" class="error"></p>
+          <a href="#" class="forgot-password">Esqueceu a senha?</a>
+        </form>
+        <p class="footer muted">Back-end: http://localhost:3000/api</p>
       </div>
-      <h2>Entrar</h2>
-      <form id="loginForm" class="grid" style="gap:10px">
-        <input type="email" id="email" placeholder="E-mail" required />
-        <input type="password" id="senha" placeholder="Senha" required />
-        <button type="submit">Entrar</button>
-        <p id="loginError" class="error"></p>
-      </form>
-      <p class="footer muted">Back-end: http://localhost:3000/api</p>
+    </div>
+
+    <div class="login-image">
+      <div class="image-content">
+        <img src="../docs/img/login-illustration.png" alt="Sistema de gestão de armazém"/>
+      </div>
     </div>
   </div>
 
