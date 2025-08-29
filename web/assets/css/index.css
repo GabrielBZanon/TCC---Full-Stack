@@ -1,0 +1,226 @@
+/* Reset e estilos globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    height: 100vh;
+    overflow: hidden; /* Evita barras de rolagem indesejadas */
+}
+
+/* Container principal */
+.login-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw; /* Garante que ocupe toda a largura */
+}
+
+/* Coluna do formulário (ESQUERDA) */
+.login-form {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    min-width: 400px; /* Largura mínima para o formulário */
+}
+
+/* Coluna da imagem (DIREITA) */
+.login-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.image-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    text-align: center;
+    color: white;
+}
+
+.login-image img {
+    width: 110%;
+    max-width: 100vw;
+    height: auto;
+    object-fit: contain;
+    margin-top: 2rem;
+}
+
+/* Restante do CSS (mantido igual) */
+.card.login {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Ajuste para a logo aumentada */
+.brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.logo {
+    width: 300px;  /* Aumentei de 120px para 180px */
+    height: 300px; /* Mantendo a proporção quadrada */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1px; /* Aumentei o espaçamento inferior */
+}
+
+.logo img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease; /* Adicionei uma transição suave */
+}
+
+/* Efeito hover opcional para dar destaque */
+.logo:hover img {
+    transform: scale(1.05);
+}
+
+.card.login h1 {
+    font-size: 28px;
+    color: #1a237e;
+    margin-bottom: 5px;
+}
+
+.card.login h2 {
+    font-size: 22px;
+    color: #424242;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+form.grid {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #555;
+    font-weight: 500;
+}
+
+input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    border-color: #1E88E5;
+    box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.2);
+    outline: none;
+}
+
+button[type="submit"] {
+    background-color: #1E88E5;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+    background-color: #1565c0;
+}
+
+.forgot-password {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #666;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    color: #1E88E5;
+    text-decoration: underline;
+}
+
+.error {
+    color: #d32f2f;
+    font-size: 14px;
+    margin: 10px 0;
+    min-height: 20px;
+    text-align: center;
+}
+
+.footer.muted {
+    color: #9e9e9e;
+    font-size: 12px;
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        overflow-y: auto;
+        height: auto;
+    }
+    
+    .login-container {
+        flex-direction: column !important;
+        height: auto !important;
+        min-height: vh;
+    }
+    
+    .login-image {
+        display: none !important;
+        height: 0 !important;
+        padding: 0 !important;
+    }
+    
+    .login-form {
+        width: 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+        padding: 20px !important;
+    }
+    
+    .card.login {
+        max-width: 100% !important;
+        box-shadow: none !important;
+    }
+}
