@@ -112,8 +112,11 @@ body {
   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
 }
 
+/* Compatibilidade cross-browser para inputs numéricos */
 .form-row input[type="number"] {
-  -moz-appearance: textfield;
+  appearance: textfield;       /* padrão */
+  -moz-appearance: textfield;  /* Firefox */
+  -webkit-appearance: none;    /* Chrome, Safari, Edge */
 }
 
 .form-row input[type="number"]::-webkit-outer-spin-button,
