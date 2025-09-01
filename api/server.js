@@ -39,13 +39,13 @@ app.get('/api/health', async (req, res) => {
 async function startServer() {
   try {
     await prisma.$connect();
-    console.log('✅ Banco de dados conectado');
+    console.log('Banco de dados conectado');
     
     app.listen(PORT, () => {
-      console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
+      console.log(`Servidor rodando em http://localhost:${PORT}`);
     });
   } catch (error) {
-    console.error('❌ Falha na inicialização:');
+    console.error('Falha na inicialização:');
     console.error(error);
     process.exit(1);
   }
