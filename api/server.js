@@ -4,7 +4,6 @@ const cors = require('cors');
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -17,7 +16,6 @@ app.use(express.json());
 
 const routes = require('./routes/routes');
 app.use('/api', routes);
-
 
 app.get('/api/health', async (req, res) => {
   try {
@@ -35,7 +33,6 @@ app.get('/api/health', async (req, res) => {
   }
 });
 
-
 async function startServer() {
   try {
     await prisma.$connect();
@@ -52,3 +49,6 @@ async function startServer() {
 }
 
 startServer();
+
+// 👉 Adicionado: exporta o app para o Vercel usar como Serverless
+module.exports = app;
