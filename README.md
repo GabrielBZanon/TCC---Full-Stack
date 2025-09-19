@@ -35,7 +35,7 @@ O projeto foi desenvolvido como Trabalho de Conclusão de Curso (TCC) e demonstr
 
 ### 1. Clonar o repositório
 ```bash
-git clone https://github.com/<seu-usuario>/smart-supply.git
+git clone https://github.com/<seu-usuario>/TCC---Full-Stack.git
 cd smart-supply
 ```
 
