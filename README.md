@@ -57,6 +57,7 @@ Abra `web/pages/index.html` no navegador
 
 ```
 api/                 # Node + Express + Prisma
+docs/
 web/
 ├── pages/           # HTML (Dashboard, Produtos, etc.)
 ├── css/             # style.css (único, responsivo)
