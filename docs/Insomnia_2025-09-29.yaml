@@ -1,0 +1,986 @@
+type: collection.insomnia.rest/5.0
+name: TCC - Smart Supply
+meta:
+  id: wrk_346b0bc9fe1c4b2496fd4fc1e1bee5b7
+  created: 1747411217656
+  modified: 1747411217656
+  description: ""
+collection:
+  - name: Local
+    meta:
+      id: fld_beced331721b468e874e9996e3cefcc0
+      created: 1759154821108
+      modified: 1759154821108
+      sortKey: -1759154821108
+      description: ""
+    children:
+      - url: http://localhost:3000
+        name: TESTE-Geral
+        meta:
+          id: req_27f95acda53d40f7b92b7861468bcd7a
+          created: 1759154835785
+          modified: 1759154857523
+          isPrivate: false
+          description: ""
+          sortKey: -1759154835785
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - name: Autenticação
+        meta:
+          id: fld_f034e80908bf4aeab7aa8a409dc82c92
+          created: 1749816458386
+          modified: 1759156016926
+          sortKey: -1759154834562.5
+          description: ""
+        children:
+          - url: http://localhost:3000/login
+            name: " Login"
+            meta:
+              id: req_ef1c9b3569434fa9850885a139e886e6
+              created: 1749816557940
+              modified: 1759156246142
+              isPrivate: false
+              description: ""
+              sortKey: -1749816563413
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                  "email": "wellington2@email.com",
+                	"senha": "senha123"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.2.0
+                id: pair_ed51386b9baf45e0b403575045e10ff8
+              - id: pair_e27c4d4f7c7b43aa86db7a5de5403d38
+                name: Autorization
+                value: ""
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/usuarios
+            name: Cadastrar Usuário
+            meta:
+              id: req_e4b62c379c3b4aa99beb76480b7aa803
+              created: 1749816568350
+              modified: 1759156230476
+              isPrivate: false
+              description: ""
+              sortKey: -1749816568350
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                  "nome": "Wellington Martins",
+                  "email": "wellington2@email.com",
+                	"senha": "senha123"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+                id: pair_cc719c75b0a14951b37463943a0fcc95
+              - name: User-Agent
+                value: insomnia/11.2.0
+                id: pair_0c962d95c7a0458cb07d01b9e137f080
+              - id: pair_a3aad03892b54a0dbac7220cf88ae879
+                name: ""
+                value: ""
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/usuarios
+            name: READ
+            meta:
+              id: req_76b91535205e437cb3bf32374b7e98fc
+              created: 1750073126595
+              modified: 1759154318975
+              isPrivate: false
+              description: ""
+              sortKey: -1750073126595
+            method: GET
+            body:
+              mimeType: application/json
+              text: ""
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.2.0
+            authentication:
+              type: bearer
+              token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoyLCJub21lIjoiVWxpc3NlcyIsImVtYWlsIjoidWxpc3Nlc0BleGVtcGxvLmNvbSIsImNhcmdvIjpudWxsLCJjcmVhdGVkQXQiOiIyMDI1LTA5LTE5VDExOjExOjMyLjAyMFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTA5LTE5VDExOjExOjMyLjAyMFoifSwiaWF0IjoxNzU5MTUzOTc5LCJleHAiOjE3NTkxNTc1Nzl9.BZYRy8O0B6_vjQAmfASIQvKNqsl5HjJ3V6iQGsLd8Ek
+              disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Produtos
+        meta:
+          id: fld_8441787e2fdc4a57821aea4dbfef26fe
+          created: 1749816476590
+          modified: 1759154830922
+          sortKey: -1759154830895
+          description: ""
+        children:
+          - url: http://localhost:3000/produtos/12
+            name: DELETE
+            meta:
+              id: req_2ebcb11276d44df98c28a63eaf5e0f9e
+              created: 1750082734686
+              modified: 1759154594564
+              isPrivate: false
+              description: ""
+              sortKey: -1750082734686
+            method: DELETE
+            body:
+              mimeType: application/json
+              text: ""
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.2.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/produtos/13
+            name: UPDATE
+            meta:
+              id: req_b77d6d6693b9455cbc31527535710a6f
+              created: 1757675206641
+              modified: 1759154585590
+              isPrivate: false
+              description: ""
+              sortKey: -1757675206641
+            method: PUT
+            body:
+              mimeType: application/json
+              text: |
+                {
+                		"nome": "Terminal Cardan",
+                		"descricao": "Axor 2036",
+                		"codigoBarras": "5901234123400",
+                		"quantidade": 50,
+                		"localEstoque": "Almoxarifado 2",
+                		"fornecedorId": 2
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.6.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/produtos
+            name: CREATE
+            meta:
+              id: req_e3a74f6574614b6e8b2523be770453fa
+              created: 1757675209556
+              modified: 1759154514429
+              isPrivate: false
+              description: ""
+              sortKey: -1757675209556
+            method: POST
+            body:
+              mimeType: application/json
+              text: |
+                {
+                		"nome": "Terminal Cardan",
+                		"descricao": "Axor 2036",
+                		"codigoBarras": "5901234123450",
+                		"quantidade": 50,
+                		"localEstoque": "Almoxarifado 2",
+                		"fornecedorId": 2
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.6.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/produtos/5
+            name: READONE
+            meta:
+              id: req_493496e734c84491b721adb4860db284
+              created: 1757675212784
+              modified: 1759154408323
+              isPrivate: false
+              description: ""
+              sortKey: -1757675212784
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.6.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/produtos
+            name: READ
+            meta:
+              id: req_34a9412afa66432da90aafde8dc74dee
+              created: 1757675335280
+              modified: 1759154405799
+              isPrivate: false
+              description: ""
+              sortKey: -1757675335280
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.6.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Fornecedores
+        meta:
+          id: fld_7b21f1a9583942498bcdb4021a4bb26b
+          created: 1759154668091
+          modified: 1759165205176
+          sortKey: -1759154833340
+          description: ""
+        children:
+          - url: http://localhost:3000/fornecedores/12
+            name: DELETE
+            meta:
+              id: req_e4c622d718bd49abb8df4aa830a8af83
+              created: 1759154668095
+              modified: 1759154715394
+              isPrivate: false
+              description: ""
+              sortKey: -1750082734686
+            method: DELETE
+            body:
+              mimeType: application/json
+              text: ""
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.2.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/fornecedores/13
+            name: UPDATE
+            meta:
+              id: req_146b965a88a2499d8ce830e9204a106a
+              created: 1759154668099
+              modified: 1759154709409
+              isPrivate: false
+              description: ""
+              sortKey: -1757675206641
+            method: PUT
+            body:
+              mimeType: application/json
+              text: |
+                {
+
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.6.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/api/fornecedores
+            name: CREATE
+            meta:
+              id: req_e4439484984c4819aba337ad529bde88
+              created: 1759154668103
+              modified: 1759164612353
+              isPrivate: false
+              description: ""
+              sortKey: -1757675209556
+            method: POST
+            body:
+              mimeType: application/json
+              text: |
+                {
+                  "nome": "Ford Motor Company",
+                  "cnpj": "03.470.727/0016-07",
+                  "contato": "0800 703 3673",
+                  "email": "central@ford.com"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.6.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/fornecedores/5
+            name: READONE
+            meta:
+              id: req_2c74c46b6fd847689dab24dad7ba4f0e
+              created: 1759154668106
+              modified: 1759154694264
+              isPrivate: false
+              description: ""
+              sortKey: -1757675212784
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.6.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/fornecedores
+            name: READ
+            meta:
+              id: req_60f19fbd74d1441bbc3330dd75399ae3
+              created: 1759154668110
+              modified: 1759154688595
+              isPrivate: false
+              description: ""
+              sortKey: -1757675335280
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.6.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Movimentações
+        meta:
+          id: fld_77cfa8a6112b40a8af3cbf4ddf806542
+          created: 1759154679379
+          modified: 1759154865916
+          sortKey: -1759154832117.5
+          description: ""
+        children:
+          - url: http://localhost:3000/movimentacoes
+            name: CREATE
+            meta:
+              id: req_d6c2d632eead43288e065065e5d938a5
+              created: 1759154679391
+              modified: 1759164762036
+              isPrivate: false
+              description: ""
+              sortKey: -1757675209556
+            method: POST
+            body:
+              mimeType: application/json
+              text: |
+                {
+                  "tipo": "entrada",
+                  "quantidade": 50,
+                  "produtoId": 1
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.6.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/movimentacoes
+            name: READ
+            meta:
+              id: req_de20a26a93f1402a97b3582f5961dbb5
+              created: 1759154679400
+              modified: 1759154732812
+              isPrivate: false
+              description: ""
+              sortKey: -1757675335280
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.6.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+  - name: Vercel
+    meta:
+      id: fld_52351d22b7c54283be8c5d3ebd5230ce
+      created: 1759154880480
+      modified: 1759154885061
+      sortKey: -1753404567308
+      description: ""
+    children:
+      - url: api-projeto-kappa.vercel.app
+        name: TESTE-Geral
+        meta:
+          id: req_c71f51f596db4b679870a6006ec6d361
+          created: 1759154880483
+          modified: 1759155501895
+          isPrivate: false
+          description: ""
+          sortKey: -1759154835785
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - name: Autenticação
+        meta:
+          id: fld_70cc0753aa5a4e518ea1e1f803c629ce
+          created: 1759154880485
+          modified: 1759155523963
+          sortKey: -1759154834562.5
+          description: ""
+        children:
+          - url: api-projeto-kappa.vercel.app/login
+            name: " Login"
+            meta:
+              id: req_46c3195af67e46559db6d8c36c0c2e50
+              created: 1759154880488
+              modified: 1759163524020
+              isPrivate: false
+              description: ""
+              sortKey: -1749816563413
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                  "email": "admin@email.com",
+                	"senha": "senha123"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.2.0
+                id: pair_ed51386b9baf45e0b403575045e10ff8
+              - id: pair_e27c4d4f7c7b43aa86db7a5de5403d38
+                name: Autorization
+                value: ""
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: api-projeto-kappa.vercel.app/usuarios
+            name: Cadastrar Usuário
+            meta:
+              id: req_4692e5aefc0942aeb93f7566c9c2ef48
+              created: 1759154880492
+              modified: 1759163522842
+              isPrivate: false
+              description: ""
+              sortKey: -1749816568350
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                  "nome": "Admin",
+                  "email": "admin@email.com",
+                	"senha": "senha123"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+                id: pair_cc719c75b0a14951b37463943a0fcc95
+              - name: User-Agent
+                value: insomnia/11.2.0
+                id: pair_0c962d95c7a0458cb07d01b9e137f080
+              - id: pair_a3aad03892b54a0dbac7220cf88ae879
+                name: ""
+                value: ""
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: api-projeto-kappa.vercel.app/usuarios
+            name: READ
+            meta:
+              id: req_bc9cbecb57dd42988e156ce934273c4b
+              created: 1759154880496
+              modified: 1759163521098
+              isPrivate: false
+              description: ""
+              sortKey: -1750073126595
+            method: GET
+            body:
+              mimeType: application/json
+              text: ""
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.2.0
+            authentication:
+              type: bearer
+              token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoyLCJub21lIjoiVWxpc3NlcyIsImVtYWlsIjoidWxpc3Nlc0BleGVtcGxvLmNvbSIsImNhcmdvIjpudWxsLCJjcmVhdGVkQXQiOiIyMDI1LTA5LTE5VDExOjExOjMyLjAyMFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTA5LTE5VDExOjExOjMyLjAyMFoifSwiaWF0IjoxNzU5MTUzOTc5LCJleHAiOjE3NTkxNTc1Nzl9.BZYRy8O0B6_vjQAmfASIQvKNqsl5HjJ3V6iQGsLd8Ek
+              disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Produtos
+        meta:
+          id: fld_c42621b72f3847d39c18bcd15aff11f9
+          created: 1759154880499
+          modified: 1759154880499
+          sortKey: -1759154830895
+          description: ""
+        children:
+          - url: http://localhost:3000/produtos/12
+            name: DELETE
+            meta:
+              id: req_89d96804c55e4bbd9f0fbded5a4bda55
+              created: 1759154880502
+              modified: 1759154880502
+              isPrivate: false
+              description: ""
+              sortKey: -1750082734686
+            method: DELETE
+            body:
+              mimeType: application/json
+              text: ""
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.2.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/produtos/13
+            name: UPDATE
+            meta:
+              id: req_119a544561c34b5d9d58b6d98ded07e7
+              created: 1759154880505
+              modified: 1759154880505
+              isPrivate: false
+              description: ""
+              sortKey: -1757675206641
+            method: PUT
+            body:
+              mimeType: application/json
+              text: |
+                {
+                		"nome": "Terminal Cardan",
+                		"descricao": "Axor 2036",
+                		"codigoBarras": "5901234123400",
+                		"quantidade": 50,
+                		"localEstoque": "Almoxarifado 2",
+                		"fornecedorId": 2
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.6.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: api-projeto-kappa.vercel.app/produtos
+            name: CREATE
+            meta:
+              id: req_cb018fcf673b4303a1261bc94e016fe5
+              created: 1759154880509
+              modified: 1759165070046
+              isPrivate: false
+              description: ""
+              sortKey: -1757675209556
+            method: POST
+            body:
+              mimeType: application/json
+              text: |
+                {
+                		"nome": "Terminal Cardan",
+                		"descricao": "Axor 2036",
+                		"codigoBarras": "5901234123450",
+                		"quantidade": 50,
+                		"localEstoque": "Almoxarifado 2",
+                		"fornecedorId": 2
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.6.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/produtos/5
+            name: READONE
+            meta:
+              id: req_384900c1947f43e4afb0a72e10f70b8f
+              created: 1759154880512
+              modified: 1759154880512
+              isPrivate: false
+              description: ""
+              sortKey: -1757675212784
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.6.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/produtos
+            name: READ
+            meta:
+              id: req_fde4be6c966746e59c63c8b43c5b544e
+              created: 1759154880516
+              modified: 1759154880516
+              isPrivate: false
+              description: ""
+              sortKey: -1757675335280
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.6.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Fornecedores
+        meta:
+          id: fld_8ba82a03b2d7476ca9719b341a9bbb99
+          created: 1759154880518
+          modified: 1759154880518
+          sortKey: -1759154833340
+          description: ""
+        children:
+          - url: http://localhost:3000/fornecedores/12
+            name: DELETE
+            meta:
+              id: req_5bbf201df5844ad0a9edef8bb011b977
+              created: 1759154880521
+              modified: 1759154880521
+              isPrivate: false
+              description: ""
+              sortKey: -1750082734686
+            method: DELETE
+            body:
+              mimeType: application/json
+              text: ""
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.2.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/fornecedores/13
+            name: UPDATE
+            meta:
+              id: req_2c02f3696dad428182dcf97b02d04648
+              created: 1759154880525
+              modified: 1759154880525
+              isPrivate: false
+              description: ""
+              sortKey: -1757675206641
+            method: PUT
+            body:
+              mimeType: application/json
+              text: |
+                {
+
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.6.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: api-projeto-kappa.vercel.app/fornecedores
+            name: CREATE
+            meta:
+              id: req_ba38f41a6b9a4949a01ac51bf5e4820a
+              created: 1759154880528
+              modified: 1759165222605
+              isPrivate: false
+              description: ""
+              sortKey: -1757675209556
+            method: POST
+            body:
+              mimeType: application/json
+              text: |
+                {
+                  "nome": "Ford Motor Company",
+                  "cnpj": "03.470.727/0016-07",
+                  "contato": "0800 703 3673",
+                  "email": "central@ford.com"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.6.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/fornecedores/5
+            name: READONE
+            meta:
+              id: req_56d1eeb28d274c86a9a128b62585beca
+              created: 1759154880531
+              modified: 1759154880531
+              isPrivate: false
+              description: ""
+              sortKey: -1757675212784
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.6.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: api-projeto-kappa.vercel.app/fornecedores
+            name: READ
+            meta:
+              id: req_f81505af4726495f9a984373467b1923
+              created: 1759154880533
+              modified: 1759156383217
+              isPrivate: false
+              description: ""
+              sortKey: -1757675335280
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.6.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Movimentações
+        meta:
+          id: fld_3c8e0920ba9046daa4135314393aa248
+          created: 1759154880537
+          modified: 1759154880537
+          sortKey: -1759154832117.5
+          description: ""
+        children:
+          - url: api-projeto-kappa.vercel.app/movimentacoes
+            name: CREATE
+            meta:
+              id: req_192546233c644127b2561a2f2a7a890e
+              created: 1759154880540
+              modified: 1759164919817
+              isPrivate: false
+              description: ""
+              sortKey: -1757675209556
+            method: POST
+            body:
+              mimeType: application/json
+              text: |
+                {
+                  "tipo": "entrada",
+                  "quantidade": 50,
+                  "produtoId": 
+                	
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.6.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/movimentacoes
+            name: READ
+            meta:
+              id: req_7c3442de0a874062bd26e131dbc39212
+              created: 1759154880543
+              modified: 1759154880543
+              isPrivate: false
+              description: ""
+              sortKey: -1757675335280
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.6.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_aba31592c63e5b49d8c9874d4242c7bc761ccef6
+    created: 1747411217674
+    modified: 1747411217674
+environments:
+  name: Base Environment
+  meta:
+    id: env_aba31592c63e5b49d8c9874d4242c7bc761ccef6
+    created: 1747411217667
+    modified: 1747411217667
+    isPrivate: false
