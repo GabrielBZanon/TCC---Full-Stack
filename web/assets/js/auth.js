@@ -6,7 +6,7 @@ export function requireAuth() {
 }
 
 export async function doLogin(email, senha) {
-  const data = await fetch("http://localhost:3000/api/usuarios/login", {
+  const data = await fetch("http://localhost:3000/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, senha }),
