@@ -1,4 +1,4 @@
-const prisma = require('../prismaClient.js')
+const prisma = require('../prismaClient.js');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -7,7 +7,6 @@ module.exports = {
         const { email, senha } = req.body;
 
         try {
-
             const usuario = await prisma.usuario.findUnique({
                 where: { email }
             });
@@ -20,15 +19,16 @@ module.exports = {
             if (!senhaValida) {
                 return res.status(401).json({ error: 'Senha inválida' });
             }
+
             const token = jwt.sign(
-                { id: usuario.id, email: usuario.email }, // <-- precisa ter o id!
+                { id: usuario.id, email: usuario.email }, // ✅ payload correto
                 process.env.JWT_SECRET,
                 { expiresIn: "1h" }
             );
 
-
             return res.status(200).json({ message: 'Login bem-sucedido', token });
         } catch (error) {
+            console.error('Erro interno no login:', error);
             return res.status(500).json({ error: 'Erro interno no login' });
         }
     }

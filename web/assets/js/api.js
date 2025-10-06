@@ -16,7 +16,7 @@ function handleAuthFailure(res) {
   }
 }
 
-export async function api(path, { method="GET", body, headers={} } = {}) {
+export async function api(path, { method = "GET", body, headers = {} } = {}) {
   const token = getToken();
   const opts = {
     method,
@@ -27,8 +27,10 @@ export async function api(path, { method="GET", body, headers={} } = {}) {
 
   const res = await fetch(`${API_URL}${path}`, opts);
   if (!res.ok) handleAuthFailure(res);
+
   let data = null;
   try { data = await res.json(); } catch {}
+
   if (!res.ok) throw new Error(data?.error || data?.erro || `HTTP ${res.status}`);
   return data;
 }
