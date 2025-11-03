@@ -22,7 +22,7 @@ app.get('/api/health', async (req, res) => {
     await prisma.$queryRaw`SELECT 1`;
     res.json({ 
       status: 'online',
-      database: 'connected',
+      database: 'connected',  
       timestamp: new Date() 
     });
   } catch (error) {
@@ -50,5 +50,4 @@ async function startServer() {
 
 startServer();
 
-// 👉 Adicionado: exporta o app para o Vercel usar como Serverless
 module.exports = app;
