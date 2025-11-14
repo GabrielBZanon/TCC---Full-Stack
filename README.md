@@ -6,7 +6,7 @@ O projeto foi desenvolvido como Trabalho de Conclusão de Curso (TCC) e demonstr
 
 ---
 
-## ✨ Principais Funcionalidades
+## Principais Funcionalidades
 
 | Módulo | Descrição |
 | ------ | --------- |
@@ -18,7 +18,7 @@ O projeto foi desenvolvido como Trabalho de Conclusão de Curso (TCC) e demonstr
 
 ---
 
-## 🏗️ Stack & Arquitetura
+## Stack & Arquitetura
 
 | Camada | Tecnologias |
 | ------ | ----------- |
@@ -53,7 +53,7 @@ Abra `web/pages/index.html` no navegador
 
 ---
 
-## 🗂️ Estrutura de Pastas (resumida)
+## Estrutura de Pastas (resumida)
 
 ```
 api/                 # Node + Express + Prisma
@@ -66,7 +66,7 @@ web/
 
 ---
 
-## 👥 Autores
+## Autores
 
 | Nome | Função |
 | ---- | ------ |
@@ -78,7 +78,7 @@ web/
 
 ---
 
-## 📄 Licença
+## Licença
 Projeto acadêmico – uso livre para fins de estudo. Credite os autores ao reutilizar.
 
 ---
