@@ -1,6 +1,6 @@
 const { PrismaClient } = require('@prisma/client');
 
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const jsonwebtoken = require("jsonwebtoken");
 
 const prisma = new PrismaClient();
@@ -65,7 +65,7 @@ const login = async (req, res) => {
 
     if (!usuario) {
       return res.status(401).json({
-        erro: 'Email ou senha inválidos'
+        erro: 'Email não encontrado'
       });
     }
 
@@ -73,7 +73,7 @@ const login = async (req, res) => {
 
     if (!senhaValida) {
       return res.status(401).json({
-        erro: 'Email ou senha inválidos'
+        erro: 'Senha inválida'
       });
     }
 
@@ -98,7 +98,19 @@ const login = async (req, res) => {
   }
 };
 
+const listarUsuarios = async (req, res) => {
+  try {
+    const usuarios = await prisma.usuario.findMany({});
+    const usuariosSemSenha = usuarios.map(({ senha, ...usuario }) => usuario);
+    return res.json(usuariosSemSenha);
+  } catch (error) {
+    console.error('Erro ao listar usuários:', error);
+    return res.status(500).json({ erro: 'Erro interno no servidor' });
+  }
+};
+
 module.exports = {
   cadastrarUsuario,
+  listarUsuarios,
   login
 };

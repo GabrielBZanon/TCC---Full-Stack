@@ -4,7 +4,7 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -37,6 +37,7 @@ model Movimentacao {
   tipo       String
   quantidade Int
   data       DateTime @default(now())
+  observacoes String?
   produto    Produto  @relation(fields: [produtoId], references: [id])
   produtoId  Int
 }

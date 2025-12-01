@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <title>Smart Supply — Produtos</title>
   <link rel="stylesheet" href="./assets/css/produtos.css" />
+  <link rel="icon" type="image/png" href="./assets/img/logo.png" />
   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -50,10 +51,15 @@
     </div>
   </div>
 
+  <!-- Rodapé adicionado -->
+  <footer class="fornecedores-footer">
+    <p>Smart Supply © 2025 - Todos os direitos reservados</p>
+  </footer>
+
   <script type="module">
-    import { requireAuth } from "./assets/js/auth.js";
-    import { http } from "./assets/js/api.js";
-    import { mountNavbar } from "./assets/js/main.js";
+    import { requireAuth } from "./js/auth.js";
+    import { http } from "./js/api.js";
+    import { mountNavbar } from "./js/main.js";
 
     requireAuth(); mountNavbar("produtos");
 

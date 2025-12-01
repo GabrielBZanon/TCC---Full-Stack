@@ -1,5 +1,5 @@
 
-# **Smart Supply – Sistema de Almoxarifado & SCM**
+# **Smart Supply – Sistema de Almoxarifado SCM**
 
 Smart Supply é um sistema **full-stack** concebido para otimizar o controle de almoxarifado, fornecedores, usuários e movimentações de estoque em ambientes industriais.  
 O projeto foi desenvolvido como Trabalho de Conclusão de Curso (TCC) e demonstra boas práticas de arquitetura, código limpo e UX simples, porém profissional.

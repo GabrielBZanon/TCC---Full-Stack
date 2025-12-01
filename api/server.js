@@ -8,21 +8,21 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(cors({ 
-  origin: 'http://127.0.0.1:5500', 
+  origin: ['http://127.0.0.1:5500', 'https://gabrielbzanon.github.io'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json());
 
 const routes = require('./routes/routes');
-app.use('/api', routes);
+app.use('/', routes);
 
-app.get('/api/health', async (req, res) => {
+app.get('/health', async (req, res) => {
   try {
     await prisma.$queryRaw`SELECT 1`;
     res.json({ 
       status: 'online',
-      database: 'connected',  
+      database: 'connected',
       timestamp: new Date() 
     });
   } catch (error) {
@@ -50,4 +50,5 @@ async function startServer() {
 
 startServer();
 
+// 👉 Adicionado: exporta o app para o Vercel usar como Serverless
 module.exports = app;

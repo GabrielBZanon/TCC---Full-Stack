@@ -4,12 +4,82 @@
   <meta charset="UTF-8" />
   <title>Smart Supply — Movimentações</title>
   <link rel="stylesheet" href="./assets/css/movimentacoes.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="./assets/img/logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* ESTILOS DE EMERGÊNCIA - APLICAR DIRETAMENTE */
+    body {
+      font-family: 'Roboto', sans-serif !important;
+      background: #152a4a !important;
+      color: #000000 !important;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .card {
+      background: white !important;
+      padding: 2rem !important;
+      border-radius: 12px !important;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2) !important;
+      margin: 1rem !important;
+    }
+    
+    .card h2 {
+      color: #1e3a5f !important;/* ALTERADO PARA BRANCO */
+      font-size: 1.5rem !important;
+      margin-bottom: 1.5rem !important;
+    }
+    
+    input, select {
+      padding: 0.875rem 1rem !important;
+      border: 2px solid #dee2e6 !important;
+      border-radius: 8px !important;
+      font-size: 1rem !important;
+      width: 100% !important;
+      margin-bottom: 1rem !important;
+      background: white !important;
+      color: #212529 !important;
+    }
+    
+    button {
+      padding: 0.875rem 1.5rem !important;
+      border: none !important;
+      border-radius: 8px !important;
+      font-size: 1rem !important;
+      background: #1e3a5f !important;
+      color: white !important;
+      cursor: pointer !important;
+    }
+    
+    .table {
+      width: 100% !important;
+      border-collapse: collapse !important;
+      background: white !important;
+    }
+    
+    .table th {
+      background: #1e3a5f !important;
+      color: white !important;
+      padding: 1rem !important;
+    }
+    
+    .table td {
+      padding: 1rem !important;
+      border-bottom: 1px solid #dee2e6 !important;
+    }
+    
+    footer {
+      text-align: center !important;
+      padding: 2rem !important;
+      color: white !important;
+      background: #152a4a !important;
+    }
+  </style>
 </head>
 <body>
   <div id="navbar"></div>
   <div class="container">
-    <div class="grid cols-
+    <div class="grid cols-2">
       <section class="card">
         <h2>Nova Movimentação</h2>
         <form id="formMov" class="grid" style="gap:10px">
@@ -48,9 +118,9 @@
   </div>
 
   <script type="module">
-    import { requireAuth } from "./assets/js/auth.js";
-    import { http } from "./assets/js/api.js";
-    import { mountNavbar } from "./assets/js/main.js";
+    import { requireAuth } from "./js/auth.js";
+    import { http } from "./js/api.js";
+    import { mountNavbar } from "./js/main.js";
 
     requireAuth(); mountNavbar("movs");
 
@@ -109,5 +179,10 @@
     await carregarProdutos();
     await carregarMovs();
   </script>
+  
+  <!-- Rodapé adicionado -->
+  <footer class="movimentacoes-footer">
+    <p>Smart Supply © 2025 · Todos os direitos reservados</p>
+  </footer>
 </body>
 </html>

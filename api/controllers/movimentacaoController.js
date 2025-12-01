@@ -9,12 +9,26 @@ const create = async (req, res) => {
   }
 
   try {
+    const produto = await prisma.produto.findFirst({
+      where: {
+        id: Number(produtoId)
+      }
+    })
+
+    if (tipo == 'ENTRADA') {
+      produto.quantidade += Number(quantidade)
+      await prisma.produto.update({
+        where:{
+          id: Number(produtoId)
+        },
+        data: {
+          quantidade: produto.quantidade
+        }
+      })
+    }
+
     const movimentacao = await prisma.movimentacao.create({
-      data: {
-        tipo,
-        quantidade,
-        produtoId,
-      },
+      data: req.body,
     });
     return res.status(201).json(movimentacao);
   } catch (error) {
